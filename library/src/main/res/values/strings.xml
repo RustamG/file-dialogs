@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Library</string>
+
+    <string name="dialog_hint_file_name">Enter file name</string>
+    <string name="menu_item_save">Save</string>
+
+</resources>
