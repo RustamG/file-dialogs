@@ -11,8 +11,6 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.File;
 
-import butterknife.InjectView;
-
 
 /**
  * Created at 31/01/15 12:07
@@ -21,7 +19,6 @@ import butterknife.InjectView;
  */
 public class SaveFileDialog extends FileDialog implements Toolbar.OnMenuItemClickListener {
 
-    @InjectView(R.id.et_filename)
     protected MaterialEditText mFileNameText;
 
     @Override
@@ -34,6 +31,8 @@ public class SaveFileDialog extends FileDialog implements Toolbar.OnMenuItemClic
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
+        mFileNameText = (MaterialEditText) view.findViewById(R.id.et_filename);
 
         mToolbar.inflateMenu(R.menu.dialog_save);
         mToolbar.setOnMenuItemClickListener(this);

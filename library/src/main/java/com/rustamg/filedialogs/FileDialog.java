@@ -20,9 +20,6 @@ import com.rustamg.filedialogs.utils.KeyboardUtils;
 import java.io.File;
 import java.io.FileFilter;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 
 /**
  * Created at 31/01/15 12:27
@@ -42,11 +39,8 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
     protected File mRootDir;
     protected FileFilter mFilesFilter;
 
-    @InjectView(R.id.toolbar)
     protected Toolbar mToolbar;
-    @InjectView(R.id.progress)
     protected ProgressBar mProgress;
-    @InjectView(R.id.rv_files)
     protected RecyclerView mRecyclerView;
 
     private UpdateFilesTask mUpdateFilesTask;
@@ -74,7 +68,9 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
 
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.inject(this, view);
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        mProgress = (ProgressBar) view.findViewById(R.id.progress);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_files);
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
 

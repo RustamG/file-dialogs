@@ -38,7 +38,6 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.android.support:appcompat-v7:21.0.3'
 
-    compile 'com.jakewharton:butterknife:5.1.2'
     compile 'com.rengwuxian.materialedittext:library:1.8.2'
 
     compile 'com.android.support:recyclerview-v7:+'

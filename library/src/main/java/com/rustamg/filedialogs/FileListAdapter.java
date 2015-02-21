@@ -12,8 +12,6 @@ import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 
 /**
@@ -72,11 +70,8 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.FileVi
         private View mView;
         private File mFile;
 
-        @InjectView(R.id.tv_file_name)
         protected TextView mFileNameText;
-        @InjectView(R.id.tv_file_modified)
         protected TextView mFileModifiedText;
-        @InjectView(R.id.iv_file_icon)
         protected ImageView mFileIcon;
 
         public FileViewHolder(View itemView) {
@@ -84,7 +79,10 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.FileVi
             super(itemView);
 
             mView = itemView;
-            ButterKnife.inject(this, itemView);
+
+            mFileNameText = (TextView) itemView.findViewById(R.id.tv_file_name);
+            mFileModifiedText = (TextView) itemView.findViewById(R.id.tv_file_modified);
+            mFileIcon = (ImageView) itemView.findViewById(R.id.iv_file_icon);
         }
 
         public void bind(File file) {
