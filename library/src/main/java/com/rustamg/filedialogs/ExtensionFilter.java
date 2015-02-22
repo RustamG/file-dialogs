@@ -10,7 +10,13 @@ public class ExtensionFilter implements FileFilter {
 
     public ExtensionFilter(String extension) {
 
-        mExtension = "." + extension.toLowerCase().replaceAll("\\.", "");
+        extension = extension.toLowerCase().replaceAll("\\.", "");
+
+        if (!extension.isEmpty()) {
+            extension = "." + extension;
+        }
+
+        mExtension = extension;
     }
 
     @Override

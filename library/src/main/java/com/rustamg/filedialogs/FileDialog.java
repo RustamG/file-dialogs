@@ -113,7 +113,7 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
             mRootDir = mCurrentDir;
         }
 
-        if (arguments != null) {
+        if (arguments != null && arguments.containsKey(EXTENSION)) {
             mExtension = arguments.getString(EXTENSION);
             mFilesFilter = new ExtensionFilter(mExtension);
         }
