@@ -7,11 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
-
 
 
 /**
@@ -28,6 +26,12 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.FileVi
     private final OnFileSelectedListener mOnFileSelectedListener;
 
     public FileListAdapter(Context context, File[] files, OnFileSelectedListener fileSelectedListener) {
+
+        if (files == null) {
+            throw new IllegalArgumentException("Files list is null. " +
+                                               "Please make sure that you have read permission to this directory. " +
+                                               "Have you added android.permission.READ_EXTERNAL_STORAGE permission to your AndroidManifest.xml?");
+        }
 
         mFiles = files;
         mInflater = LayoutInflater.from(context);

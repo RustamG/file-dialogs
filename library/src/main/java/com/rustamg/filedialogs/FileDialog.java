@@ -207,6 +207,7 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
 
             mDirectory = files[0];
             mFileArray = files[0].listFiles(mFilesFilter);
+
             return mFileArray;
         }
 

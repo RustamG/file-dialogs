@@ -10,7 +10,7 @@ public class ExtensionFilter implements FileFilter {
 
     public ExtensionFilter(String extension) {
 
-        mExtension = extension.toLowerCase().replaceAll("\\.", "");
+        mExtension = "." + extension.toLowerCase().replaceAll("\\.", "");
     }
 
     @Override
