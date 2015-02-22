@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">File Dialogs</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="label_test_open_dialog">Open file dialog</string>
+    <string name="label_test_save_dialog">Save File dialog</string>
+    <string name="toast_file_selected">Selected file: %1$s</string>
+    <string name="extendsion_filter">Extension Filter</string>
 </resources>
