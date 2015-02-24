@@ -40,5 +40,7 @@ dependencies {
 
     compile 'com.rengwuxian.materialedittext:library:1.8.2'
 
-    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:recyclerview-v7:21.0.3'
 }
+
+apply from: 'maven-push.gradle'
