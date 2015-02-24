@@ -40,12 +40,12 @@ In order to change the color of icons in a toolbar, add the following item to yo
 
 Please refer to the sample project to see how it works.
 
-For more detailed toolbar customization please use toolbarStyle (without ```android:``` prefix) item in the theme that is used for the dialog.
+For more detailed toolbar customization please use toolbarStyle item (without ```android:``` prefix) in the theme that is used for the dialog.
 
 ## Download
 Gradle:
 ```groovy
-    compile 'com.github.rustamg:file-dialogs:0.1.2'
+    compile 'com.github.rustamg:file-dialogs:0.1.3'
 ```
 
 Maven:
@@ -53,7 +53,7 @@ Maven:
 <dependency>
   <groupId>com.github.rustamg</groupId>
   <artifactId>file-dialogs</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
   <type>aar</type>
 </dependency>
 ```
