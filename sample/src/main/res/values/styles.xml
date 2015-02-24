@@ -2,9 +2,21 @@
 
     <!-- Base application theme. -->
     <style name="Theme.Sample"
-        parent="Theme.AppCompat.Light">
+        parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="file_dialog_icons_color">#ff20a344</item>
+
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">@color/accent</item>
+
+
+        <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
+
+        <!--<item name="file_dialog_toolbar_icons_color">#ff20a344</item>-->
+
+    </style>
+
+    <style name="Widget.App.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 
 </resources>

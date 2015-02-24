@@ -60,7 +60,7 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
 
         super.onAttach(activity);
 
-        int[] iconColorAttr = new int[] { R.attr.file_dialog_icons_color };
+        int[] iconColorAttr = new int[] { R.attr.file_dialog_toolbar_icons_color };
         int indexOfAttrIconColor = 0;
         TypedValue typedValue = new TypedValue();
         TypedArray a = activity.obtainStyledAttributes(typedValue.data, iconColorAttr);
