@@ -3,11 +3,11 @@ Android library with save and open file dialogs.
 
 
 ## Features
-1. **Open file dialog**
-![Open](./images/Open.png)
+**Open file dialog** | **Save file dialog**
+-------------------- | --------------------
+<img src="https://github.com/RustamG/file-dialogs/raw/master/images/Open.png" height="260" /> | <img src="https://github.com/RustamG/file-dialogs/raw/master/images/Save.png" height="260" />
 
-2. **Save file dialog**
-![Save](./images/Save.png)
+
 
 ## Usage
 ```java
@@ -35,7 +35,8 @@ In order to change the color of icons in a toolbar, add the following item to yo
 ```xml
 <item name="file_dialog_toolbar_icons_color">#ff3f4aff</item>
 ```
-![Colored_icons](./images/Colored_icons.png)
+
+<img src="https://github.com/RustamG/file-dialogs/raw/master/images/Colored_icons.png" height="260" />
 
 Please refer to the sample project to see how it works.
 
