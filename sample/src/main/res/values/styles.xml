@@ -4,7 +4,7 @@
     <style name="Theme.Sample"
         parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="file_dialog_icons_color">#AA00DD</item>
+        <item name="file_dialog_icons_color">#ff20a344</item>
     </style>
 
 </resources>
