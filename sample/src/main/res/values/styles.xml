@@ -2,8 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="Theme.Sample"
-        parent="Theme.AppCompat.Light.DarkActionBar">
+        parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
+        <item name="file_dialog_icons_color">#AA00DD</item>
     </style>
 
 </resources>

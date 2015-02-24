@@ -1,6 +1,7 @@
 package com.rustamg.filedialogs;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import java.io.File;
  */
 public class SaveFileDialog extends FileDialog implements Toolbar.OnMenuItemClickListener {
 
+
     protected MaterialEditText mFileNameText;
 
     @Override
@@ -35,6 +37,7 @@ public class SaveFileDialog extends FileDialog implements Toolbar.OnMenuItemClic
         mFileNameText = (MaterialEditText) view.findViewById(R.id.et_filename);
 
         mToolbar.inflateMenu(R.menu.dialog_save);
+        mToolbar.getMenu().findItem(R.id.menu_apply).getIcon().setColorFilter(mIconColor, PorterDuff.Mode.SRC_IN);
         mToolbar.setOnMenuItemClickListener(this);
 
         mFileNameText.addValidator(new FileNameValidator(getString(R.string.error_invalid_file_name),

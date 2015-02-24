@@ -1,6 +1,10 @@
 package com.rustamg.filedialogs;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,16 +47,25 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
     protected Toolbar mToolbar;
     protected ProgressBar mProgress;
     protected RecyclerView mRecyclerView;
+    protected int mIconColor;
 
     private UpdateFilesTask mUpdateFilesTask;
     protected String mExtension;
 
     private String mRootPathDisplayName; // todo: create an argument for this
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
+    @Override
+    public void onAttach(Activity activity) {
+
+        super.onAttach(activity);
+
+        int[] iconColorAttr = new int[] { R.attr.file_dialog_icons_color };
+        int indexOfAttrIconColor = 0;
+        TypedValue typedValue = new TypedValue();
+        TypedArray a = activity.obtainStyledAttributes(typedValue.data, iconColorAttr);
+        mIconColor = a.getColor(indexOfAttrIconColor, Color.WHITE);
+        a.recycle();
     }
 
     @Override
@@ -218,15 +232,20 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
 
             if (!isCancelled() && getActivity() != null) {
 
+                Drawable navIcon;
+
                 if (mDirectory.getPath().equalsIgnoreCase(EXTERNAL_ROOT_PATH)) {
 
                     mToolbar.setTitle(mRootPathDisplayName);
-                    mToolbar.setNavigationIcon(R.drawable.ic_cross);
+                    navIcon = getResources().getDrawable(R.drawable.ic_cross);
                 }
                 else {
                     mToolbar.setTitle(mCurrentDir.getName());
-                    mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+                    navIcon = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 }
+
+                navIcon.setColorFilter(mIconColor, PorterDuff.Mode.SRC_IN);
+                mToolbar.setNavigationIcon(navIcon);
 
                 mRecyclerView.setAdapter(new FileListAdapter(getActivity(), localFiles, FileDialog.this));
 
