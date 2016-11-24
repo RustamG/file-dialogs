@@ -11,7 +11,7 @@
 
         <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
 
-        <!--<item name="file_dialog_toolbar_icons_color">#ff20a344</item>-->
+        <!--<item name="file_dialog_toolbar_icons_color">#ff3f4aff</item>-->
 
     </style>
 

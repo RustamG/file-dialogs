@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -237,11 +238,11 @@ public abstract class FileDialog extends DialogFragment implements FileListAdapt
                 if (mDirectory.getPath().equalsIgnoreCase(EXTERNAL_ROOT_PATH)) {
 
                     mToolbar.setTitle(mRootPathDisplayName);
-                    navIcon = getResources().getDrawable(R.drawable.ic_cross);
+                    navIcon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_cross, null);
                 }
                 else {
                     mToolbar.setTitle(mCurrentDir.getName());
-                    navIcon = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+                    navIcon = ResourcesCompat.getDrawable(getResources(), R.drawable.abc_ic_ab_back_material, null);
                 }
 
                 navIcon.setColorFilter(mIconColor, PorterDuff.Mode.SRC_IN);
