@@ -53,7 +53,7 @@ Maven:
 <dependency>
   <groupId>com.github.rustamg</groupId>
   <artifactId>file-dialogs</artifactId>
-  <version>1.4</version>
+  <version>1.0</version>
   <type>aar</type>
 </dependency>
 ```
