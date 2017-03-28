@@ -17,6 +17,12 @@
 apply plugin: 'maven'
 apply plugin: 'signing'
 
+Properties props = new Properties()
+props.load(new FileInputStream("$project.projectDir/maven-credentials.properties"))
+props.each { prop ->
+    project.ext.set(prop.key, prop.value)
+}
+
 def isReleaseBuild() {
     return VERSION_NAME.contains("SNAPSHOT") == false
 }
@@ -32,11 +38,11 @@ def getSnapshotRepositoryUrl() {
 }
 
 def getRepositoryUsername() {
-    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ""
+    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : project.ext.NEXUS_USERNAME
 }
 
 def getRepositoryPassword() {
-    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ""
+    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : project.ext.NEXUS_PASSWORD
 }
 
 afterEvaluate { project ->

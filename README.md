@@ -45,7 +45,7 @@ For more detailed toolbar customization please use toolbarStyle item (without ``
 ## Download
 Gradle:
 ```groovy
-    compile 'com.github.rustamg:file-dialogs:0.1.3'
+    compile 'com.github.rustamg:file-dialogs:1.0'
 ```
 
 Maven:
@@ -53,7 +53,7 @@ Maven:
 <dependency>
   <groupId>com.github.rustamg</groupId>
   <artifactId>file-dialogs</artifactId>
-  <version>0.1.3</version>
+  <version>1.4</version>
   <type>aar</type>
 </dependency>
 ```
