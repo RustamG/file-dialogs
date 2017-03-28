@@ -1,9 +1,9 @@
 package com.rustamg.filedialogs.sample;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBarActivity;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,15 +11,17 @@ import android.widget.Toast;
 import com.rustamg.filedialogs.FileDialog;
 import com.rustamg.filedialogs.OpenFileDialog;
 import com.rustamg.filedialogs.SaveFileDialog;
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import java.io.File;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
+import rx.functions.Action1;
 
 
-public class MainActivity extends ActionBarActivity
-        implements View.OnClickListener, FileDialog.OnFileSelectedListener {
+public class MainActivity extends AppCompatActivity implements FileDialog.OnFileSelectedListener {
 
     @InjectView(R.id.et_extension)
     protected EditText mExtensionText;
@@ -27,6 +29,8 @@ public class MainActivity extends ActionBarActivity
     protected Button mOpenFileButton;
     @InjectView(R.id.btn_test_save_dialog)
     protected Button mSaveFileButton;
+
+    private boolean mStoragePermissionGranted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +40,48 @@ public class MainActivity extends ActionBarActivity
 
         ButterKnife.inject(this);
 
-        mOpenFileButton.setOnClickListener(this);
-        mSaveFileButton.setOnClickListener(this);
+        requestStoragePermissions();
     }
 
-    @Override
-    public void onClick(View v) {
+    private void requestStoragePermissions() {
 
-        switch (v.getId()) {
+        new RxPermissions(this)
+                .request(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .subscribe(new Action1<Boolean>() {
 
-            case R.id.btn_test_open_dialog: {
-                showFileDialog(new OpenFileDialog(), OpenFileDialog.class.getName());
-                break;
-            }
-            case R.id.btn_test_save_dialog: {
-                showFileDialog(new SaveFileDialog(), SaveFileDialog.class.getName());
-                break;
-            }
+                    @Override
+                    public void call(Boolean granted) {
+
+                        mStoragePermissionGranted = granted;
+                    }
+                });
+    }
+
+    @OnClick(R.id.btn_test_open_dialog)
+    protected void onOpenDialogClick() {
+
+        if (mStoragePermissionGranted) {
+            showFileDialog(new OpenFileDialog(), OpenFileDialog.class.getName());
         }
+        else {
+            showPermissionError();
+        }
+    }
+
+    @OnClick(R.id.btn_test_save_dialog)
+    protected void onSaveDialogClick() {
+
+        if (mStoragePermissionGranted) {
+            showFileDialog(new SaveFileDialog(), SaveFileDialog.class.getName());
+        }
+        else {
+            showPermissionError();
+        }
+    }
+
+    private void showPermissionError() {
+
+        Toast.makeText(this, "Storage permission is not granted", Toast.LENGTH_LONG).show();
     }
 
     private void showFileDialog(FileDialog dialog, String tag) {
