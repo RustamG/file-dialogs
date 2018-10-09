@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/dialog_hint_file_name"
-            android:inputType="text"
+            android:inputType="text|textNoSuggestions"
             app:met_floatingLabel="normal" />
 
     </FrameLayout>

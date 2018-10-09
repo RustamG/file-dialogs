@@ -78,7 +78,17 @@ public class SaveFileDialog extends FileDialog implements Toolbar.OnMenuItemClic
 
         if (menuItem.getItemId() == R.id.menu_apply && mFileNameText.validate()) {
 
-            File result = new File(mCurrentDir, mFileNameText.getText() + (mExtension != null ? mExtension : ""));
+            String input = mFileNameText.getText().toString();
+            String inputExtension = "";
+
+            if(mExtension != null) {
+                if (!input.endsWith("." + mExtension)) {
+                    inputExtension = "." + mExtension;
+                }
+            }
+
+            File result = new File(mCurrentDir, mFileNameText.getText() + inputExtension);
+
 
             if (result.exists()) {
                 confirmOverwrite(result);
